@@ -203,6 +203,14 @@
     <Compile Include="Migrations\201905181434431_AddNameToUserInfo.Designer.cs">
       <DependentUpon>201905181434431_AddNameToUserInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905181436475_RenameType.cs" />
+    <Compile Include="Migrations\201905181436475_RenameType.Designer.cs">
+      <DependentUpon>201905181436475_RenameType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905181438070_RenameType1.cs" />
+    <Compile Include="Migrations\201905181438070_RenameType1.Designer.cs">
+      <DependentUpon>201905181438070_RenameType1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -295,6 +303,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905181434431_AddNameToUserInfo.resx">
       <DependentUpon>201905181434431_AddNameToUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181436475_RenameType.resx">
+      <DependentUpon>201905181436475_RenameType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181438070_RenameType1.resx">
+      <DependentUpon>201905181438070_RenameType1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

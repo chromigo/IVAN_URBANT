@@ -6,8 +6,8 @@ namespace IvanUrbant.Models
     {
         public int Id { get; set; }
         public int Level { get; set; }
-        public int LevelUpPercentage { get; set; }
-        public int SelectedType { get; set; }
+        public int Experience { get; set; }
+        public int Type { get; set; }
         public int Name { get; set; }
     }
 }

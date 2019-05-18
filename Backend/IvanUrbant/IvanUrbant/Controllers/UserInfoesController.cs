@@ -74,8 +74,8 @@ namespace IvanUrbant.Controllers
                 return NotFound();
             }
             user.Level = userInfo.Level;
-            user.SelectedType = userInfo.SelectedType;
-            user.LevelUpPercentage = userInfo.LevelUpPercentage;
+            user.Type = userInfo.Type;
+            user.Experience = userInfo.Experience;
 
             await db.SaveChangesAsync();
 
@@ -86,7 +86,7 @@ namespace IvanUrbant.Controllers
         {
             var newInfo = new UserInfo
             {
-                SelectedType = userInfo.SelectedType,
+                Type = userInfo.Type,
                 Name = userInfo.Name
             };
             db.UserInfos.Add(newInfo);
