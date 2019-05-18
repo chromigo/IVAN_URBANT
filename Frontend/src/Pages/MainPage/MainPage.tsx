@@ -1,8 +1,9 @@
+import * as classnames from "classnames";
 import * as React from "react";
 import {IContext} from '../../App/App';
 import {CharAvatar} from '../../CharAvatar/CharAvatar';
 import {Modal} from '../../Modal/Modal';
-import {ICard} from '../../models/models';
+import {CardType, ICard} from '../../models/models';
 import "./MainPage.less";
 
 interface MainPageProps extends IContext {
@@ -13,12 +14,14 @@ interface MainPageState {
   showCard?: boolean;
   hiddenCards?: number[];
   activeCard?: number;
+  selectedAnswer?: number;
+  answerGuessed?: boolean;
 }
 
 export class MainPage extends React.Component<MainPageProps, MainPageState> {
   constructor(props: any, state: any) {
     super(props, state);
-    this.state = {showLootbox: false, showCard: false, hiddenCards: [], activeCard: null};
+    this.state = {showLootbox: false, showCard: false, hiddenCards: [], activeCard: null, selectedAnswer: null};
   }
 
   render(): JSX.Element {
@@ -67,7 +70,8 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
     const updatedHiddenCards = [...this.state.hiddenCards].concat(cardIndex);
 
     if (currentCard && this.state.showCard) {
-      const {title, description, experience, coins} = currentCard;
+      const {title, description, experience, coins, type, answers, correctAnswer, id} = currentCard;
+      const acceptEnable = type === CardType.Question ? this.state.selectedAnswer !== null : true;
 
       return (
         <Modal onClose={() => this.setState({showCard: false, showLootbox: true, hiddenCards: updatedHiddenCards})}>
@@ -78,8 +82,12 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
             </div>
             <div className="title">{title}</div>
             <div className="description">{description}</div>
+            {type === CardType.Question && answers && answers.length ? this.renderAnswers(answers) : null}
             <div className="acceptWrap">
-              <div className="accept">Приступить</div>
+              <div className={`accept ${!acceptEnable ? "disabled" : ""}`}
+                   onClick={() => this.onAccept(type, id, answers, correctAnswer)}>
+                {type === CardType.Question ? "Проверить" : "Приступить"}
+              </div>
             </div>
           </div>
         </Modal>
@@ -87,5 +95,44 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
     }
   }
 
+  private renderAnswers(answers: string[]): JSX.Element {
+    return (
+      <div className="answers">
+        {answers.map((a, i) => {
+          const selected = this.state.selectedAnswer === i;
+          const guessed = selected && this.state.answerGuessed === true;
+          const notGuessed = selected && this.state.answerGuessed === false;
+
+          const answerClassName = classnames(
+            "answer",
+            guessed ? "correct" : notGuessed ? "wrong" : ""
+          );
+
+          return (
+            <label key={i} className={answerClassName}>
+              <input type="radio"
+                     className="answerInput"
+                     name="answer"
+                     checked={selected}
+                     onChange={() => this.setState({selectedAnswer: i, answerGuessed: null})}/>
+              <span>{a}</span>
+            </label>
+          )
+        })}
+      </div>
+    );
+  }
+
   private onShowCard = (activeCard: number) => this.setState({showLootbox: false, showCard: true, activeCard});
+
+  private onAccept = (type: CardType, cardId: string, answers: string[], correctAnswer: string) => {
+    if (type === CardType.Question) {
+      const currentAnswer = answers && answers[this.state.selectedAnswer];
+      if (currentAnswer === correctAnswer) {
+        this.setState({answerGuessed: true});
+      } else {
+        this.setState({answerGuessed: false});
+      }
+    }
+  }
 }

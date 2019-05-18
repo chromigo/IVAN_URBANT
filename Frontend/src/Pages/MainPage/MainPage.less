@@ -98,8 +98,43 @@
   .accept {
     padding: 0.6em 1em;
     font-size: 1.2em;
-    border: 2px solid grey;
+    border: 2px solid white;
     display: inline-block;
     text-align: center;
+
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.4;
+    }
+  }
+
+  .answers {
+    margin-top: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 2em;
+
+    .answer {
+      width: 45%;
+      flex: 0 0 45%;
+      margin: 2%;
+      display: flex;
+      font-size: 1.4em;
+      line-height: 1.6em;
+
+      &.correct {
+        color: #7ecc7e;
+      }
+
+      &.wrong {
+        color: #da5454;
+      }
+    }
+
+    .answerInput {
+      margin-right: 0.6em;
+      position: relative;
+      top: 8px;
+    }
   }
 }

@@ -1,5 +1,6 @@
 import {createHashHistory} from 'history';
 import * as React from "react";
+import {Loader} from '../Loader/Loader';
 import {CardStatus, CardType, ICard, IChar} from '../models/models';
 import {Routing} from '../Routing/Routing';
 
@@ -9,8 +10,15 @@ const card1: ICard = {
   experience: 22,
   id: "123",
   status: CardStatus.InProgress,
-  type: CardType.Task,
-  description: "some card description"
+  type: CardType.Question,
+  description: "some card description",
+  correctAnswer: "second answer",
+  answers: [
+    "oloo1",
+    "second answer",
+    "third",
+    "dfkdklfkldskl dslkf ldkf ldsfk"
+  ]
 }
 
 const card2: ICard = {
@@ -63,7 +71,7 @@ export class App extends React.Component<{}, AppState> {
   render(): JSX.Element {
     return (
       <App.Provider value={this.bindContext()}>
-        {this.state.loading ? <div>loading...</div> : <Routing showCreator={!!(!this.state.char)}/>}
+        {this.state.loading ? <Loader/> : <Routing showCreator={!!(!this.state.char)}/>}
       </App.Provider>
     );
   }
@@ -82,9 +90,10 @@ export class App extends React.Component<{}, AppState> {
   }
 
   private getCharInfo = async () => {
+    //TODO: сделать задержку в пару секунд на запрос, чтобы нормально показался голубь-лоадер
     /*const char = await CharApi.getInfo();
     this.setState({char, loading: false});*/
 
-    this.setState({char: testChar, loading: false});
+    setTimeout(() => this.setState({char: testChar, loading: false}), 4000);
   }
 }
