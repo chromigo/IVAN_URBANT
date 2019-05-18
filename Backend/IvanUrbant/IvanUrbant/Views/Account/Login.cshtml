@@ -1,7 +1,7 @@
 ﻿@using IvanUrbant.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "Вход";
+    ViewBag.Title = "Городской супер герой - вход";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -11,6 +11,10 @@
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
+                <hr />
+                <p>
+                    @Html.ActionLink("Регистрация", "Register")
+                </p>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -37,12 +41,9 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
+                        <input type="submit" value="Войти" class="btn btn-default" />
                     </div>
                 </div>
-                <p>
-                    @Html.ActionLink("Регистрация", "Register")
-                </p>
             }
         </section>
     </div>

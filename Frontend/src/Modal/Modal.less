@@ -1,0 +1,39 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1em 1.2em;
+}
+
+.modalBack {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0f0f0f;
+  opacity: 0.6;
+  z-index: 200;
+}
+
+.modalContent {
+  height: 100%;
+  //background-color: #f1f1f1;
+  position: relative;
+  z-index: 300;
+}
+
+.modalClose {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  z-index: 350;
+
+  &:before {
+    content: "\2573";
+    color: white;
+    font-size: 2em;
+  }
+}

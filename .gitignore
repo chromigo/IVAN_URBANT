@@ -49,3 +49,4 @@ webpack-assets.json
 .vscode
 *.mdf
 *.ldf
+*/**/Front/*
