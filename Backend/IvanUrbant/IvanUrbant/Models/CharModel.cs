@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace IvanUrbant.Models
@@ -14,5 +15,58 @@ namespace IvanUrbant.Models
         public int Type { get; set; }
         [JsonProperty("coins")]
         public int Coins { get; set; }
+        [JsonProperty("availableCards")]
+        public IEnumerable<AvailableCardModel> AvailableCards { get; set; }
+    }
+
+    public class AvailableCardModel
+    {
+        [JsonProperty("isLootboxed")]
+        public bool IsLootboxed { get; set; }
+        [JsonProperty("card")]
+        public CardModel Card { get; set; }
+    }
+
+    public class CardModel {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+        [JsonProperty("type")]
+        public CardType Type { get; set; }
+        [JsonProperty("title")]
+        public string Title { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
+        [JsonProperty("exp")]
+        public int Exp { get; set; }
+        [JsonProperty("coins")]
+        public int Coins { get; set; }
+        [JsonProperty("status")]
+        public CardStatus Status { get; set; }
+        [JsonProperty("answers")]
+        public IEnumerable<AnswerModel> Answers { get; set; }
+        [JsonProperty("correctAnswer")]
+        public AnswerModel CorrectAnswer { get; set; }
+    }
+    
+    public class AnswerModel {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+        [JsonProperty("title")]
+        public string Title { get; set; }
+    }
+
+    public enum CardStatus
+    {
+        NotActive = 0,
+        InProgress = 1,
+        Skipped,
+        Completed
+    }
+    
+    public enum CardType
+    {
+        Task = 1,
+        Question,
+        Advice
     }
 }
