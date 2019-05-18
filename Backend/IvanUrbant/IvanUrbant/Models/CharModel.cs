@@ -15,10 +15,10 @@ namespace IvanUrbant.Models
         [JsonProperty("coins")]
         public int Coins { get; set; }
         [JsonProperty("lootboxes")]
-        public CardModel Lootboxes { get; set; }
+        public CardModel[] Lootboxes { get; set; }
+        [JsonProperty("availableCards")]
+        public CardModel[] AvailableCards { get; set; }
     }
-
-
 
     public class CardModel {
         [JsonProperty("id")]
@@ -36,14 +36,14 @@ namespace IvanUrbant.Models
         [JsonProperty("status")]
         public CardStatus Status { get; set; }
         [JsonProperty("answers")]
-        public string[] Answers { get; set; }
+        public AnswerModel[] Answers { get; set; }
         [JsonProperty("correctAnswer")]
-        public string CorrectAnswer { get; set; }
+        public AnswerModel CorrectAnswer { get; set; }
     }
     
     public class AnswerModel {
         [JsonProperty("id")]
-        public string Id { get; set; }
+        public int Id { get; set; }
         [JsonProperty("title")]
         public string Title { get; set; }
     }

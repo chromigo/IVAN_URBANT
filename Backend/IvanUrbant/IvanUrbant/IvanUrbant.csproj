@@ -231,6 +231,10 @@
     <Compile Include="Migrations\201905181632145_Card2.Designer.cs">
       <DependentUpon>201905181632145_Card2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905181748503_LootboxAndAvailableCards.cs" />
+    <Compile Include="Migrations\201905181748503_LootboxAndAvailableCards.Designer.cs">
+      <DependentUpon>201905181748503_LootboxAndAvailableCards.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CharModel.cs" />
@@ -345,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905181632145_Card2.resx">
       <DependentUpon>201905181632145_Card2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181748503_LootboxAndAvailableCards.resx">
+      <DependentUpon>201905181748503_LootboxAndAvailableCards.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
