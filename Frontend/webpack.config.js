@@ -37,8 +37,8 @@ module.exports = {
     entry: path.join(__dirname, '/src/index.tsx'),
     devtool: 'inline-source-map',
     output: {
-        filename: 'build/app.js',
-        path: __dirname
+        filename: '.deploy/app.js',
+        path: path.resolve('..')
     },
     module: {
         rules: [
@@ -62,8 +62,8 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'build/styles.css',
-            path: __dirname
+            filename: '.deploy/styles.css',
+            path: path.resolve('..')
         })
     ],
     optimization: {
