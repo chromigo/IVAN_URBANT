@@ -2,7 +2,7 @@ export interface IChar {
   name: string;
   level: number;
   coins: number;
-  exp: number;
+  experience: number;
   avatar: 1 | 2 | 3;
   lootboxes?: ICard[];
 }

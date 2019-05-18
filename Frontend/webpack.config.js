@@ -22,7 +22,7 @@ const devCssRules = {
 };
 
 const prodCssRules = {
-    test: /\.(less)$/,
+    test: /\.(c|le)ss$/,
     use: [
         MiniCssExtractPlugin.loader,
         "css-loader",
@@ -30,11 +30,12 @@ const prodCssRules = {
     ]
 };
 
-//const cssRules = prod ? prodCssRules : devCssRules;
-const cssRules = devCssRules;
+const cssRules = prod ? prodCssRules : devCssRules;
+//const cssRules = devCssRules;
 
-const chunkName = "app.js";
-const outputFileName = prod ? `Backend/IvanUrbant/IvanUrbant/Front/${chunkName}` : `build/${chunkName}`;
+const appName = "app.js";
+const stylesName = "styles.css";
+const outputFileName = prod ? `Backend/IvanUrbant/IvanUrbant/Front/${appName}` : `build/${appName}`;
 const outputPath = prod ? path.resolve('..') : __dirname;
 
 module.exports = {
@@ -66,8 +67,8 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: '.deploy/styles.css',
-            path: path.resolve('..')
+            filename: prod ? `Backend/IvanUrbant/IvanUrbant/Front/${stylesName}` : `build/${stylesName}`,
+            path: outputPath
         })
     ],
     optimization: {

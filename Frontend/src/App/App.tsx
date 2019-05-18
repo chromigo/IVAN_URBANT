@@ -1,5 +1,6 @@
 import {createHashHistory} from 'history';
 import * as React from "react";
+import {CharApi} from '../api/CharApi';
 import {IChar} from '../models/models';
 import {Routing} from '../Routing/Routing';
 
@@ -7,7 +8,7 @@ const testChar: IChar = {
   name: "Мой супер чар",
   avatar: 1,
   coins: 3,
-  exp: 5,
+  experience: 5,
   level: 20,
   lootboxes: []
 }
@@ -52,11 +53,12 @@ export class App extends React.Component<{}, AppState> {
   };
 
   private async getCharInfo() {
-    //const char = await CharApi.getInfo();
-    //this.setState({char});
+    const char = await CharApi.getInfo();
+    console.log(char);
+    this.setState({char, loading: false});
 
-    setTimeout(() => {
+    /*setTimeout(() => {
       this.setState({char: testChar, loading: false});
-    }, 10)
+    }, 10)*/
   }
 }

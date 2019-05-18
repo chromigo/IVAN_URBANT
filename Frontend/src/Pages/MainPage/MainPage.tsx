@@ -23,14 +23,14 @@ export class MainPage extends React.Component<MainPageProps> {
   }
 
   private renderCharInfo(char: IChar): JSX.Element {
-    const {name, level, lootboxes, exp, coins, avatar} = char;
+    const {name, level, lootboxes, experience, coins, avatar} = char;
 
     return (
       <div>
         <div>{name}</div>
         <div><CharAvatar type={avatar} staticPic/></div>
         <div>Уровень: {level}</div>
-        <div>Exp: {exp}</div>
+        <div>Exp: {experience}</div>
         <div>Монет: {coins}</div>
       </div>
     )
