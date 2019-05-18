@@ -13,7 +13,7 @@ namespace IvanUrbant.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201905181209125_AddUserInfoLink"; }
+            get { return "201905181218110_AddUserInfoLink"; }
         }
         
         string IMigrationMetadata.Source

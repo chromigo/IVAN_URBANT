@@ -16,8 +16,7 @@ namespace IvanUrbant.Models
             // Add custom user claims here
             return userIdentity;
         }
-
-        public int UserInfoId {get; set;}
+        
         public UserInfo UserInfo {get; set;}
     }
 

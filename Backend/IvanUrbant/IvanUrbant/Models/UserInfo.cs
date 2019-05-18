@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace IvanUrbant.Models
 {
     public class UserInfo

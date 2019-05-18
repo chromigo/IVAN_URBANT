@@ -194,6 +194,10 @@
     <Compile Include="Migrations\201905181207162_AddUserInfo.Designer.cs">
       <DependentUpon>201905181207162_AddUserInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905181218110_AddUserInfoLink.cs" />
+    <Compile Include="Migrations\201905181218110_AddUserInfoLink.Designer.cs">
+      <DependentUpon>201905181218110_AddUserInfoLink.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -280,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905181207162_AddUserInfo.resx">
       <DependentUpon>201905181207162_AddUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181218110_AddUserInfoLink.resx">
+      <DependentUpon>201905181218110_AddUserInfoLink.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
