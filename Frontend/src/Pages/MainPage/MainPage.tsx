@@ -1,5 +1,6 @@
 import * as React from "react";
 import {App, IContext} from '../../App/App';
+import {CharAvatar} from '../../CharAvatar/CharAvatar';
 import {IChar} from '../../models/models';
 
 interface MainPageProps {
@@ -26,8 +27,11 @@ export class MainPage extends React.Component<MainPageProps> {
 
     return (
       <div>
-        <div>Имя: {name}</div>
+        <div>{name}</div>
+        <div><CharAvatar type={avatar} staticPic/></div>
         <div>Уровень: {level}</div>
+        <div>Exp: {exp}</div>
+        <div>Монет: {coins}</div>
       </div>
     )
   }

@@ -1,6 +1,5 @@
 import {createHashHistory} from 'history';
 import * as React from "react";
-import {CharApi} from '../api/CharApi';
 import {IChar} from '../models/models';
 import {Routing} from '../Routing/Routing';
 
@@ -24,9 +23,9 @@ interface AppState extends IContext {
 }
 
 export class App extends React.Component<{}, AppState> {
+  public static Consumer: React.Consumer<IContext>;
   private static Context: React.Context<IContext>;
   private static Provider: React.Provider<IContext>;
-  public static Consumer: React.Consumer<IContext>;
 
   constructor(props: any, state: any) {
     super(props, state);
@@ -52,12 +51,12 @@ export class App extends React.Component<{}, AppState> {
     App.Consumer = App.Context.Consumer;
   };
 
-  private async getCharInfo(){
+  private async getCharInfo() {
     //const char = await CharApi.getInfo();
     //this.setState({char});
 
     setTimeout(() => {
-      this.setState({char: /*testChar*/null, loading: false});
+      this.setState({char: testChar, loading: false});
     }, 10)
   }
 }
