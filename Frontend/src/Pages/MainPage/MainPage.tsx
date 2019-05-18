@@ -78,6 +78,9 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
             </div>
             <div className="title">{title}</div>
             <div className="description">{description}</div>
+            <div className="acceptWrap">
+              <div className="accept">Приступить</div>
+            </div>
           </div>
         </Modal>
       );
