@@ -12,7 +12,7 @@ export interface ICard {
   type: CardType;
   title: string;
   description: string;
-  exp: number;
+  experience: number;
   coins: number;
   status: CardStatus;
   answers?: string[];

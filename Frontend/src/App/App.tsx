@@ -1,8 +1,27 @@
 import {createHashHistory} from 'history';
 import * as React from "react";
-import {CharApi} from '../api/CharApi';
-import {IChar} from '../models/models';
+import {CardStatus, CardType, ICard, IChar} from '../models/models';
 import {Routing} from '../Routing/Routing';
+
+const card1: ICard = {
+  title: "Some card",
+  coins: 3,
+  experience: 22,
+  id: "123",
+  status: CardStatus.InProgress,
+  type: CardType.Task,
+  description: "some card description"
+}
+
+const card2: ICard = {
+  title: "Some other card",
+  coins: 32,
+  experience: 223,
+  id: "123",
+  status: CardStatus.InProgress,
+  type: CardType.Task,
+  description: "alfj lamk f;ldmkafmdamfkl dmsklfm dsfklsdm fklsdm fklmdsmf dksfkdmsf klksdf"
+}
 
 const testChar: IChar = {
   name: "Мой супер чар",
@@ -10,7 +29,9 @@ const testChar: IChar = {
   coins: 3,
   experience: 5,
   level: 20,
-  lootboxes: []
+  lootboxes: [
+    card1, card2
+  ]
 }
 
 export const hashHistory = createHashHistory();
@@ -61,11 +82,9 @@ export class App extends React.Component<{}, AppState> {
   }
 
   private getCharInfo = async () => {
-    const char = await CharApi.getInfo();
-    this.setState({char, loading: false});
+    /*const char = await CharApi.getInfo();
+    this.setState({char, loading: false});*/
 
-    /*setTimeout(() => {
-      this.setState({char: testChar, loading: false});
-    }, 10)*/
+    this.setState({char: testChar, loading: false});
   }
 }
