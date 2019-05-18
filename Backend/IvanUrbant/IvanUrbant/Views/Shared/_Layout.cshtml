@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Site.css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
@@ -29,11 +30,13 @@
 <div class="container body-content">
     @RenderBody()
 </div>
-<hr />
+
+<!--
 <div>
     Account:
     @Html.ActionLink("Иван Урбант", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
 </div>
+-->
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
