@@ -37,13 +37,6 @@ namespace IvanUrbant.Models
         public Card Card { get; set; }
         public bool IsLootboxed { get; set; }
     }
-//    
-//    public class AvailableCard
-//    {
-//        public int Id { get; set; }
-//        public UserInfo UserInfo { get; set; }
-//        public Card Card { get; set; }
-//    }
 
     public class Card
     {
@@ -56,7 +49,6 @@ namespace IvanUrbant.Models
         public CardStatus Status { get; set; }
         public ICollection<Answer> Answers { get; set; }
         public Answer CorrectAnswer { get; set; }
-//        public virtual ICollection<UserInfo> UserInfos { get; set; }
         public CardModel ToCardModel()
         {
             return new CardModel
