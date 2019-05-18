@@ -1,6 +1,7 @@
 import * as React from "react";
 import {IContext} from '../../App/App';
 import {CharAvatar} from '../../CharAvatar/CharAvatar';
+import "./MainPage.less";
 
 interface MainPageProps extends IContext {
 }
@@ -11,11 +12,11 @@ export class MainPage extends React.Component<MainPageProps> {
 
     return (
       <div>
-        <div>{name}</div>
-        <div><CharAvatar type={avatar} staticPic/></div>
-        <div>Уровень: {level}</div>
-        <div>Exp: {experience}</div>
+        <h1>{name}</h1>
+        <div className="level">{level}</div>
         <div>Монет: {coins}</div>
+        <div>Exp: {experience}</div>
+        <div><CharAvatar type={avatar} staticPic/></div>
       </div>
     )
   }
