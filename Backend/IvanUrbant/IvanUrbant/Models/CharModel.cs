@@ -14,10 +14,16 @@ namespace IvanUrbant.Models
         public int Type { get; set; }
         [JsonProperty("coins")]
         public int Coins { get; set; }
-        [JsonProperty("lootboxes")]
-        public CardModel[] Lootboxes { get; set; }
         [JsonProperty("availableCards")]
-        public CardModel[] AvailableCards { get; set; }
+        public AvailableCardModel[] AvailableCards { get; set; }
+    }
+
+    public class AvailableCardModel
+    {
+        [JsonProperty("isLootboxed")]
+        public bool IsLootboxed { get; set; }
+        [JsonProperty("card")]
+        public CardModel Card { get; set; }
     }
 
     public class CardModel {
@@ -26,9 +32,9 @@ namespace IvanUrbant.Models
         [JsonProperty("type")]
         public CardType Type { get; set; }
         [JsonProperty("title")]
-        public int Title { get; set; }
+        public string Title { get; set; }
         [JsonProperty("description")]
-        public int Description { get; set; }
+        public string Description { get; set; }
         [JsonProperty("exp")]
         public int Exp { get; set; }
         [JsonProperty("coins")]
@@ -50,6 +56,7 @@ namespace IvanUrbant.Models
 
     public enum CardStatus
     {
+        NotActive = 0,
         InProgress = 1,
         Skipped,
         Completed

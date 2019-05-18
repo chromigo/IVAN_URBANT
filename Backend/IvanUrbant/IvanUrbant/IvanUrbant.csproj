@@ -235,6 +235,22 @@
     <Compile Include="Migrations\201905181748503_LootboxAndAvailableCards.Designer.cs">
       <DependentUpon>201905181748503_LootboxAndAvailableCards.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905181755535_FixCarTypes.cs" />
+    <Compile Include="Migrations\201905181755535_FixCarTypes.Designer.cs">
+      <DependentUpon>201905181755535_FixCarTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905181819409_ManyToManyCards.cs" />
+    <Compile Include="Migrations\201905181819409_ManyToManyCards.Designer.cs">
+      <DependentUpon>201905181819409_ManyToManyCards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905181851561_ManyToManyCards1.cs" />
+    <Compile Include="Migrations\201905181851561_ManyToManyCards1.Designer.cs">
+      <DependentUpon>201905181851561_ManyToManyCards1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905181854154_ManyToManyCards2.cs" />
+    <Compile Include="Migrations\201905181854154_ManyToManyCards2.Designer.cs">
+      <DependentUpon>201905181854154_ManyToManyCards2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CharModel.cs" />
@@ -352,6 +368,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905181748503_LootboxAndAvailableCards.resx">
       <DependentUpon>201905181748503_LootboxAndAvailableCards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181755535_FixCarTypes.resx">
+      <DependentUpon>201905181755535_FixCarTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181819409_ManyToManyCards.resx">
+      <DependentUpon>201905181819409_ManyToManyCards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181851561_ManyToManyCards1.resx">
+      <DependentUpon>201905181851561_ManyToManyCards1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181854154_ManyToManyCards2.resx">
+      <DependentUpon>201905181854154_ManyToManyCards2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

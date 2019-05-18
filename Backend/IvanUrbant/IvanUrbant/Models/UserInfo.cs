@@ -11,8 +11,7 @@ namespace IvanUrbant.Models
         public int Type { get; set; }
         public string Name { get; set; }
         public int Coins { get; set; }
-        public ICollection<Card> LootboxCards { get; set; }
-        public ICollection<Card> AvailableCards { get; set; }
+        public virtual ICollection<AvailableCards> AvailableCards { get; set; }
         public CharModel ToCharModel()
         {
             return new CharModel
@@ -22,24 +21,42 @@ namespace IvanUrbant.Models
                 Level = Level,
                 Name = Name,
                 Type = Type,
-                Lootboxes = LootboxCards.Select(e => e.ToCardModel()).ToArray(),
-                AvailableCards = AvailableCards.Select(e => e.ToCardModel()).ToArray()
+                AvailableCards = AvailableCards.Select(e => new AvailableCardModel
+                {
+                    IsLootboxed = e.IsLootboxed,
+                    Card = e.Card.ToCardModel()
+                }).ToArray()
             };
         }
     }
+
+    public class AvailableCards
+    {
+        public int Id { get; set; }
+        public UserInfo UserInfo { get; set; }
+        public Card Card { get; set; }
+        public bool IsLootboxed { get; set; }
+    }
+//    
+//    public class AvailableCard
+//    {
+//        public int Id { get; set; }
+//        public UserInfo UserInfo { get; set; }
+//        public Card Card { get; set; }
+//    }
 
     public class Card
     {
         public int Id { get; set; }
         public CardType Type { get; set; }
-        public int Title { get; set; }
-        public int Description { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
         public int Exp { get; set; }
         public int Coins { get; set; }
         public CardStatus Status { get; set; }
         public ICollection<Answer> Answers { get; set; }
         public Answer CorrectAnswer { get; set; }
-        
+//        public virtual ICollection<UserInfo> UserInfos { get; set; }
         public CardModel ToCardModel()
         {
             return new CardModel
