@@ -1,5 +1,6 @@
 import * as React from "react";
 import {CharApi} from '../../api/CharApi';
+import {CharAvatar} from '../../CharAvatar/CharAvatar';
 import {IChar} from '../../models/models';
 import * as styles from "./CreatorPage.less";
 import * as classnames from "classnames";
@@ -37,12 +38,9 @@ export class CreatorPage extends React.Component<CreatorPageProps, Partial<IChar
                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({name: e.target.value})}/>
         </div>
         <div className={styles.avatars}>
-          <div className={`${styles.avatar} ${styles.first} ${this.getSelectedClassName(1)}`}
-               onClick={() => this.setState({avatar: 1})}/>
-          <div className={`${styles.avatar} ${styles.second} ${this.getSelectedClassName(2)}`}
-               onClick={() => this.setState({avatar: 2})}/>
-          <div className={`${styles.avatar} ${styles.third} ${this.getSelectedClassName(3)}`}
-               onClick={() => this.setState({avatar: 3})}/>
+          <CharAvatar selected={this.getSelectedClassName(1)} type={1} onSelect={this.onSelectAvatar}/>
+          <CharAvatar selected={this.getSelectedClassName(2)} type={2} onSelect={this.onSelectAvatar}/>
+          <CharAvatar selected={this.getSelectedClassName(3)} type={3} onSelect={this.onSelectAvatar}/>
         </div>
         <div className={styles.createButtonWrap}>
           <div onClick={() => creatingEnable && CharApi.create(this.state)} className={createButtonStyles}>
@@ -53,7 +51,7 @@ export class CreatorPage extends React.Component<CreatorPageProps, Partial<IChar
     );
   }
 
-  private getSelectedClassName(avatarType: 1 | 2 | 3): string {
-    return this.state.avatar === avatarType ? styles.selected : "";
-  }
+  private getSelectedClassName =(avatarType: 1 | 2 | 3): boolean => this.state.avatar === avatarType;
+
+  private onSelectAvatar = (avatarType: 1 | 2 | 3) => this.setState({avatar: avatarType});
 }
