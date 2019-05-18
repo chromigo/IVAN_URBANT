@@ -5,21 +5,3 @@
 <div class="row">
     Тут контент
 </div>
-
-<script>
-//получаем текущий, если нету 404
-// fetch('/api/UserInfoes', {method: 'GET'})
-//   .then(function(response) {
-//       if(response.status === 404){
-//           console.log('not inititalized');
-//       }
-//     return response.json();
-//    })
-//    .then(function (value) {
-//        console.log(value);
-//      })
-//создание нового
-//fetch('/api/UserInfoes', {method: 'POST', headers: new Headers({'content-type': 'application/json'}), body:JSON.stringify({level:1, exp: 10, avatar: 1, coins: 10, name:'ivan'})});
-//обновление
-fetch('/api/UserInfoes', {method: 'PUT', headers: new Headers({'content-type': 'application/json'}), body:JSON.stringify({level:1, exp: 10, avatar: 1, coins: 10, name:'ivan'})});
-</script>
