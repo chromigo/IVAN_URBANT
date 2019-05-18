@@ -2,6 +2,7 @@ import * as React from "react";
 import {Route, Switch} from 'react-router';
 import {HashRouter} from 'react-router-dom';
 import {App, hashHistory, IContext} from '../App/App';
+import {Layout} from '../Layout/Layout';
 import {IChar} from '../models/models';
 import {Navigation} from '../Navigation/Navigation';
 import {CreatorPage} from '../Pages/CreatorPage/CreatorPage';
@@ -26,18 +27,20 @@ export class Routing extends React.Component<RoutingProps> {
         <App.Consumer>
           {(context: IContext) => (
             <>
+              <Layout>
+                <Switch>
+                  <Route
+                    exact
+                    path={RouterPaths.Root}
+                    render={() => this.renderMain(context)}
+                  />
+                  <Route
+                    path={RouterPaths.Cards}
+                    render={() => <div>second page</div>}
+                  />
+                </Switch>
+              </Layout>
               <Navigation/>
-              <Switch>
-                <Route
-                  exact
-                  path={RouterPaths.Root}
-                  render={() => this.renderMain(context)}
-                />
-                <Route
-                  path={RouterPaths.Cards}
-                  render={() => <div>second page</div>}
-                />
-              </Switch>
             </>
           )}
         </App.Consumer>

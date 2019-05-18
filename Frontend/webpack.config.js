@@ -8,15 +8,8 @@ const devCssRules = {
     test: /\.(c|le)ss$/,
     use: [
         {loader: 'style-loader'},
-        {
-            loader: 'css-loader', options: {
-                importLoaders: 1,
-                localIdentName: '[local]--[hash:base64:5]',
-                sourceMap: !prod,
-                modules: !prod
-            }
-        },
-        {loader: 'less-loader', options: {sourceMap: !prod}}
+        {loader: 'css-loader', options: {sourceMap: true}},
+        {loader: 'less-loader', options: {sourceMap: true}}
     ],
     include: [path.join(__dirname, 'src')]
 };
