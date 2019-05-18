@@ -28,22 +28,22 @@ namespace IvanUrbant.Controllers
                 return NotFound();
             }
 
-            return Json(user);
+            return Json(user.ToCharModel());
         }
 
         private async Task<UserInfo> GetCurrentUserInfo()
         {
             var userId = RequestContext.Principal.Identity.GetUserId();
-            var user = await db.Set<ApplicationUser>()
+            var charModel = await db.Set<ApplicationUser>()
                 .Where(e => e.Id == userId)
                 .Select(e => e.UserInfo)
                 .FirstOrDefaultAsync();
-            return user;
+            return charModel;
         }
 
         // POST: api/UserInfoes
         [ResponseType(typeof(UserInfo))]
-        public async Task<IHttpActionResult> PostUserInfo(UserInfo userInfo)
+        public async Task<IHttpActionResult> PostUserInfo(CharModel charModel)
         {
             if (!ModelState.IsValid)
             {
@@ -55,14 +55,14 @@ namespace IvanUrbant.Controllers
                 return BadRequest("Пользователь уже создан");
             }
 
-            await CreateUserInfo(userInfo);
+            await CreateUserInfo(charModel);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
         
          // PUT: api/UserInfoes
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutUserInfo(UserInfo userInfo)
+        public async Task<IHttpActionResult> PutUserInfo(CharModel charModel)
         {
             if (!ModelState.IsValid)
             {
@@ -73,21 +73,21 @@ namespace IvanUrbant.Controllers
             {
                 return NotFound();
             }
-            user.Level = userInfo.Level;
-            user.Type = userInfo.Type;
-            user.Experience = userInfo.Experience;
+            user.Level = charModel.Level;
+            user.Type = charModel.Type;
+            user.Experience = charModel.Experience;
 
             await db.SaveChangesAsync();
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        private async Task CreateUserInfo(UserInfo userInfo)
+        private async Task CreateUserInfo(CharModel charModel)
         {
             var newInfo = new UserInfo
             {
-                Type = userInfo.Type,
-                Name = userInfo.Name
+                Type = charModel.Type,
+                Name = charModel.Name
             };
             db.UserInfos.Add(newInfo);
             await db.SaveChangesAsync();

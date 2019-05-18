@@ -8,7 +8,19 @@ namespace IvanUrbant.Models
         public int Level { get; set; }
         public int Experience { get; set; }
         public int Type { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
         public int Coins { get; set; }
+
+        public CharModel ToCharModel()
+        {
+            return new CharModel
+            {
+                Coins = Coins,
+                Experience = Experience,
+                Level = Level,
+                Name = Name,
+                Type = Type
+            };
+        }
     }
 }
