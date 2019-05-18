@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace IvanUrbant.Models
@@ -15,7 +16,7 @@ namespace IvanUrbant.Models
         [JsonProperty("coins")]
         public int Coins { get; set; }
         [JsonProperty("availableCards")]
-        public AvailableCardModel[] AvailableCards { get; set; }
+        public IEnumerable<AvailableCardModel> AvailableCards { get; set; }
     }
 
     public class AvailableCardModel
@@ -42,7 +43,7 @@ namespace IvanUrbant.Models
         [JsonProperty("status")]
         public CardStatus Status { get; set; }
         [JsonProperty("answers")]
-        public AnswerModel[] Answers { get; set; }
+        public IEnumerable<AnswerModel> Answers { get; set; }
         [JsonProperty("correctAnswer")]
         public AnswerModel CorrectAnswer { get; set; }
     }

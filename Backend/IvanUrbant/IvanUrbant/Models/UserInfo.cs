@@ -12,22 +12,6 @@ namespace IvanUrbant.Models
         public string Name { get; set; }
         public int Coins { get; set; }
         public virtual ICollection<AvailableCards> AvailableCards { get; set; }
-        public CharModel ToCharModel()
-        {
-            return new CharModel
-            {
-                Coins = Coins,
-                Experience = Experience,
-                Level = Level,
-                Name = Name,
-                Type = Type,
-                AvailableCards = AvailableCards.Select(e => new AvailableCardModel
-                {
-                    IsLootboxed = e.IsLootboxed,
-                    Card = e.Card.ToCardModel()
-                }).ToArray()
-            };
-        }
     }
 
     public class AvailableCards
@@ -49,31 +33,12 @@ namespace IvanUrbant.Models
         public CardStatus Status { get; set; }
         public ICollection<Answer> Answers { get; set; }
         public Answer CorrectAnswer { get; set; }
-        public CardModel ToCardModel()
-        {
-            return new CardModel
-            {
-                Id = Id,
-                Type = Type,
-                Title = Title,
-                Description = Description,
-                Exp = Exp,
-                Coins = Coins,
-                Status = Status,
-                Answers = Answers.Select(e => e.ToAnswerModel()).ToArray(),
-                CorrectAnswer = CorrectAnswer.ToAnswerModel()
-            };
-        }
+
     }
 
     public class Answer
     {
         public int Id { get; set; }
         public string Title { get; set; }
-
-        public AnswerModel ToAnswerModel()
-        {
-            return new AnswerModel{Id = Id, Title = Title};
-        }
     }
 }

@@ -26,15 +26,38 @@ namespace IvanUrbant.Controllers
                 return Ok();
             }
 
-            return Json(user.ToCharModel());
+            return Json(user);
         }
-
-        private async Task<UserInfo> GetCurrentUserInfo()
+        private async Task<CharModel> GetCurrentUserInfo()
         {
             var userId = RequestContext.Principal.Identity.GetUserId();
             var charModel = await db.Set<ApplicationUser>()
                 .Where(e => e.Id == userId)
                 .Select(e => e.UserInfo)
+                .Select(c => new CharModel
+                {
+                    Coins = c.Coins,
+                    Experience = c.Experience,
+                    Level = c.Level,
+                    Name = c.Name,
+                    Type = c.Type,
+                    AvailableCards = c.AvailableCards.Select(e => new AvailableCardModel
+                    {
+                        IsLootboxed = e.IsLootboxed,
+                        Card = new CardModel
+                        {
+                            Id = e.Card.Id,
+                            Type = e.Card.Type,
+                            Title = e.Card.Title,
+                            Description =e.Card. Description,
+                            Exp = e.Card.Exp,
+                            Coins = e.Card.Coins,
+                            Status = e.Card.Status,
+                            Answers = e.Card.Answers.Select(p => new AnswerModel{Id = p.Id, Title = p.Title}),
+                            CorrectAnswer = e.Card.CorrectAnswer != null ? new AnswerModel{Id = e.Card.CorrectAnswer.Id, Title = e.Card.CorrectAnswer.Title} : null
+                        }
+                    })
+                })
                 .FirstOrDefaultAsync();
             return charModel;
         }
