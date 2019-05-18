@@ -34,6 +34,7 @@ namespace IvanUrbant.Controllers
             var charModel = await db.Set<ApplicationUser>()
                 .Where(e => e.Id == userId)
                 .Select(e => e.UserInfo)
+                .Where(e => e != null)
                 .Select(c => new CharModel
                 {
                     Coins = c.Coins,
@@ -57,6 +58,7 @@ namespace IvanUrbant.Controllers
                             CorrectAnswer = e.Card.CorrectAnswer != null ? new AnswerModel{Id = e.Card.CorrectAnswer.Id, Title = e.Card.CorrectAnswer.Title} : null
                         }
                     })
+
                 })
                 .FirstOrDefaultAsync();
             return charModel;
