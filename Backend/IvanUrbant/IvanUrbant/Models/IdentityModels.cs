@@ -16,6 +16,8 @@ namespace IvanUrbant.Models
             // Add custom user claims here
             return userIdentity;
         }
+        
+        public UserInfo UserInfo {get; set;}
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -29,5 +31,7 @@ namespace IvanUrbant.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<UserInfo> UserInfos {get;set;}
     }
 }

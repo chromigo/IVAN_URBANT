@@ -183,6 +183,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UserInfoesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -190,10 +191,35 @@
     <Compile Include="Migrations\201905180917009_Initial.Designer.cs">
       <DependentUpon>201905180917009_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905181207162_AddUserInfo.cs" />
+    <Compile Include="Migrations\201905181207162_AddUserInfo.Designer.cs">
+      <DependentUpon>201905181207162_AddUserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905181218110_AddUserInfoLink.cs" />
+    <Compile Include="Migrations\201905181218110_AddUserInfoLink.Designer.cs">
+      <DependentUpon>201905181218110_AddUserInfoLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905181434431_AddNameToUserInfo.cs" />
+    <Compile Include="Migrations\201905181434431_AddNameToUserInfo.Designer.cs">
+      <DependentUpon>201905181434431_AddNameToUserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905181436475_RenameType.cs" />
+    <Compile Include="Migrations\201905181436475_RenameType.Designer.cs">
+      <DependentUpon>201905181436475_RenameType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905181438070_RenameType1.cs" />
+    <Compile Include="Migrations\201905181438070_RenameType1.Designer.cs">
+      <DependentUpon>201905181438070_RenameType1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905181439312_AddCoins.cs" />
+    <Compile Include="Migrations\201905181439312_AddCoins.Designer.cs">
+      <DependentUpon>201905181439312_AddCoins.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -272,6 +298,24 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905180917009_Initial.resx">
       <DependentUpon>201905180917009_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181207162_AddUserInfo.resx">
+      <DependentUpon>201905181207162_AddUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181218110_AddUserInfoLink.resx">
+      <DependentUpon>201905181218110_AddUserInfoLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181434431_AddNameToUserInfo.resx">
+      <DependentUpon>201905181434431_AddNameToUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181436475_RenameType.resx">
+      <DependentUpon>201905181436475_RenameType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181438070_RenameType1.resx">
+      <DependentUpon>201905181438070_RenameType1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181439312_AddCoins.resx">
+      <DependentUpon>201905181439312_AddCoins.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
