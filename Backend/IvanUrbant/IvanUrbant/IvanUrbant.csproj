@@ -219,6 +219,18 @@
     <Compile Include="Migrations\201905181520322_FixType.Designer.cs">
       <DependentUpon>201905181520322_FixType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905181616388_Card.cs" />
+    <Compile Include="Migrations\201905181616388_Card.Designer.cs">
+      <DependentUpon>201905181616388_Card.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905181617560_Card1.cs" />
+    <Compile Include="Migrations\201905181617560_Card1.Designer.cs">
+      <DependentUpon>201905181617560_Card1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905181632145_Card2.cs" />
+    <Compile Include="Migrations\201905181632145_Card2.Designer.cs">
+      <DependentUpon>201905181632145_Card2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CharModel.cs" />
@@ -324,6 +336,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905181520322_FixType.resx">
       <DependentUpon>201905181520322_FixType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181616388_Card.resx">
+      <DependentUpon>201905181616388_Card.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181617560_Card1.resx">
+      <DependentUpon>201905181617560_Card1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181632145_Card2.resx">
+      <DependentUpon>201905181632145_Card2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

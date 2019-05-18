@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace IvanUrbant.Models
 {
@@ -10,7 +10,6 @@ namespace IvanUrbant.Models
         public int Type { get; set; }
         public string Name { get; set; }
         public int Coins { get; set; }
-
         public CharModel ToCharModel()
         {
             return new CharModel
@@ -22,5 +21,24 @@ namespace IvanUrbant.Models
                 Type = Type
             };
         }
+    }
+
+    public class Card
+    {
+        public int Id { get; set; }
+        public CardType Type { get; set; }
+        public int Title { get; set; }
+        public int Description { get; set; }
+        public int Exp { get; set; }
+        public int Coins { get; set; }
+        public CardStatus Status { get; set; }
+        public ICollection<Answer> Answers { get; set; }
+        public Answer CorrectAnswer { get; set; }
+    }
+
+    public class Answer
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
     }
 }
