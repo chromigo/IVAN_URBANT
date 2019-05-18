@@ -1,6 +1,4 @@
-﻿using System;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -25,7 +23,7 @@ namespace IvanUrbant.Controllers
 
             if (user == null)
             {
-                return NotFound();
+                return Ok();
             }
 
             return Json(user.ToCharModel());
@@ -71,7 +69,7 @@ namespace IvanUrbant.Controllers
             var user = await GetCurrentUserInfo();
             if (user == null)
             {
-                return NotFound();
+                return Ok();
             }
             user.Level = charModel.Level;
             user.Type = charModel.Type;
