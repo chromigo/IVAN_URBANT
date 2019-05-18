@@ -33,12 +33,16 @@ const prodCssRules = {
 //const cssRules = prod ? prodCssRules : devCssRules;
 const cssRules = devCssRules;
 
+const chunkName = "app.js";
+const outputFileName = prod ? `Backend/IvanUrbant/IvanUrbant/Front/${chunkName}` : `build/${chunkName}`;
+const outputPath = prod ? path.resolve('..') : __dirname;
+
 module.exports = {
     entry: path.join(__dirname, '/src/index.tsx'),
     devtool: 'inline-source-map',
     output: {
-        filename: 'Backend/IvanUrbant/IvanUrbant/Front/app.js',
-        path: path.resolve('..')
+        filename: outputFileName,
+        path: outputPath
     },
     module: {
         rules: [
