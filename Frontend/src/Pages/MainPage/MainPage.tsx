@@ -1,29 +1,13 @@
 import * as React from "react";
-import {App, IContext} from '../../App/App';
+import {IContext} from '../../App/App';
 import {CharAvatar} from '../../CharAvatar/CharAvatar';
-import {IChar} from '../../models/models';
 
-interface MainPageProps {
-
+interface MainPageProps extends IContext {
 }
 
 export class MainPage extends React.Component<MainPageProps> {
   render(): JSX.Element {
-    return (
-      <App.Consumer>
-        {(context: IContext) => {
-          return (
-            <div>
-              {this.renderCharInfo(context.char)}
-            </div>
-          )
-        }}
-      </App.Consumer>
-    );
-  }
-
-  private renderCharInfo(char: IChar): JSX.Element {
-    const {name, level, lootboxes, experience, coins, avatar} = char;
+    const {name, level, lootboxes, experience, coins, avatar} = this.props.char;
 
     return (
       <div>

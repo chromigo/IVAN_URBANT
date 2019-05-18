@@ -1,12 +1,13 @@
+import * as classnames from "classnames";
 import * as React from "react";
 import {CharApi} from '../../api/CharApi';
+import {IContext} from '../../App/App';
 import {CharAvatar} from '../../CharAvatar/CharAvatar';
 import {IChar} from '../../models/models';
+import {RouterPaths, Routing} from '../../Routing/Routing';
 import "./CreatorPage.less";
-import * as classnames from "classnames";
 
-interface CreatorPageProps {
-
+interface CreatorPageProps extends IContext {
 }
 
 export class CreatorPage extends React.Component<CreatorPageProps, Partial<IChar>> {
@@ -43,7 +44,7 @@ export class CreatorPage extends React.Component<CreatorPageProps, Partial<IChar
           <CharAvatar selected={this.getSelectedClassName(3)} type={3} onSelect={this.onSelectAvatar}/>
         </div>
         <div className="createButtonWrap">
-          <div onClick={() => creatingEnable && CharApi.create(this.state)} className={createButtonStyles}>
+          <div onClick={() => creatingEnable && this.onCreate()} className={createButtonStyles}>
             Create!
           </div>
         </div>
@@ -54,4 +55,9 @@ export class CreatorPage extends React.Component<CreatorPageProps, Partial<IChar
   private getSelectedClassName =(avatarType: 1 | 2 | 3): boolean => this.state.avatar === avatarType;
 
   private onSelectAvatar = (avatarType: 1 | 2 | 3) => this.setState({avatar: avatarType});
+
+  private onCreate = async () => {
+    await CharApi.create(this.state);
+    this.props.getCharInfo();
+  }
 }

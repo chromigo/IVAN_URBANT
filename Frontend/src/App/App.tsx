@@ -17,6 +17,7 @@ export const hashHistory = createHashHistory();
 
 export interface IContext {
   char?: IChar;
+  getCharInfo?: () => void;
 }
 
 interface AppState extends IContext {
@@ -40,7 +41,7 @@ export class App extends React.Component<{}, AppState> {
 
   render(): JSX.Element {
     return (
-      <App.Provider value={{...this.state}}>
+      <App.Provider value={this.bindContext()}>
         {this.state.loading ? <div>loading...</div> : <Routing showCreator={!!(!this.state.char)}/>}
       </App.Provider>
     );
@@ -52,9 +53,15 @@ export class App extends React.Component<{}, AppState> {
     App.Consumer = App.Context.Consumer;
   };
 
-  private async getCharInfo() {
+  private bindContext(): IContext {
+    return {
+      ...this.state,
+      getCharInfo: this.getCharInfo
+    }
+  }
+
+  private getCharInfo = async () => {
     const char = await CharApi.getInfo();
-    console.log(char);
     this.setState({char, loading: false});
 
     /*setTimeout(() => {
