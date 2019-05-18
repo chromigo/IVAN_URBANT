@@ -3,7 +3,7 @@ export interface IChar {
   level: number;
   coins: number;
   exp: number;
-  avatar: string;
+  avatar: 1 | 2 | 3;
   lootboxes?: ICard[];
 }
 
