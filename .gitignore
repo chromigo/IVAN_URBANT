@@ -47,3 +47,5 @@ webpack-assets.json
 */**/Mocks/*MockFile.txt
 .vs
 .vscode
+*.mdf
+*.ldf
