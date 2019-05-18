@@ -86,9 +86,8 @@ namespace IvanUrbant.Controllers
         {
             var newInfo = new UserInfo
             {
-                Level = userInfo.Level,
-                LevelUpPercentage = userInfo.LevelUpPercentage,
-                SelectedType = userInfo.SelectedType
+                SelectedType = userInfo.SelectedType,
+                Name = userInfo.Name
             };
             db.UserInfos.Add(newInfo);
             await db.SaveChangesAsync();
