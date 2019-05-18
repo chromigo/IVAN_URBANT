@@ -5,7 +5,7 @@ import {Navigation} from '../Navigation/Navigation';
 
 export enum RouterPaths {
   Root = "/",
-  ReviseCard = "/reviseCard"
+  Second = "/second"
 }
 
 interface RoutingProps {
@@ -24,7 +24,7 @@ export class Routing extends React.Component<RoutingProps> {
             render={() => <div>first page</div>}
           />
           <Route
-            path={RouterPaths.ReviseCard}
+            path={RouterPaths.Second}
             render={() => <div>second page</div>}
           />
         </Switch>

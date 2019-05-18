@@ -15,7 +15,7 @@ export class Navigation extends React.Component<NavigationProps> {
           <Link to={RouterPaths.Root}>root</Link>
         </div>
         <div>
-          <Link to={RouterPaths.ReviseCard}>second page</Link>
+          <Link to={RouterPaths.Second}>second page</Link>
         </div>
         <hr/>
       </div>

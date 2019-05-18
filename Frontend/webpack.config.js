@@ -37,7 +37,7 @@ module.exports = {
     entry: path.join(__dirname, '/src/index.tsx'),
     devtool: 'inline-source-map',
     output: {
-        filename: '.deploy/app.js',
+        filename: 'Backend/IvanUrbant/IvanUrbant/Front/app.js',
         path: path.resolve('..')
     },
     module: {
