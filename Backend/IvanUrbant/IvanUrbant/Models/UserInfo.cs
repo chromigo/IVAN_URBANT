@@ -9,5 +9,6 @@ namespace IvanUrbant.Models
         public int Experience { get; set; }
         public int Type { get; set; }
         public int Name { get; set; }
+        public int Coins { get; set; }
     }
 }

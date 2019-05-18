@@ -211,6 +211,10 @@
     <Compile Include="Migrations\201905181438070_RenameType1.Designer.cs">
       <DependentUpon>201905181438070_RenameType1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905181439312_AddCoins.cs" />
+    <Compile Include="Migrations\201905181439312_AddCoins.Designer.cs">
+      <DependentUpon>201905181439312_AddCoins.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -309,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905181438070_RenameType1.resx">
       <DependentUpon>201905181438070_RenameType1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181439312_AddCoins.resx">
+      <DependentUpon>201905181439312_AddCoins.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
