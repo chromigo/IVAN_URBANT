@@ -91,11 +91,11 @@ export class App extends React.Component<{}, AppState> {
   }
 
   private getCharInfo = async () => {
-    /*setTimeout(async () => {
+    setTimeout(async () => {
       const char = await CharApi.getInfo();
       this.setState({char, loading: false});
-    }, 1500);*/
+    }, 1500);
 
-    setTimeout(() => this.setState({char: testChar, loading: false}), 1);
+    /*setTimeout(() => this.setState({char: testChar, loading: false}), 1);*/
   }
 }
