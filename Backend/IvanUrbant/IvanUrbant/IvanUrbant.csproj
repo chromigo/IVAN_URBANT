@@ -256,6 +256,10 @@
     <Compile Include="Migrations\201905190517328_FixWrongFileds.Designer.cs">
       <DependentUpon>201905190517328_FixWrongFileds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905190604207_ReplaceStatusCard.cs" />
+    <Compile Include="Migrations\201905190604207_ReplaceStatusCard.Designer.cs">
+      <DependentUpon>201905190604207_ReplaceStatusCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CharModel.cs" />
@@ -390,6 +394,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905190517328_FixWrongFileds.resx">
       <DependentUpon>201905190517328_FixWrongFileds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905190604207_ReplaceStatusCard.resx">
+      <DependentUpon>201905190604207_ReplaceStatusCard.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

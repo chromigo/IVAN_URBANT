@@ -19,7 +19,7 @@ namespace IvanUrbant.Models
         public int Id { get; set; }
         public UserInfo UserInfo { get; set; }
         public Card Card { get; set; }
-        public bool IsLootboxed { get; set; }
+        public CardStatus CardStatus { get; set; }
     }
 
     public class Card
@@ -30,7 +30,6 @@ namespace IvanUrbant.Models
         public string Description { get; set; }
         public int Exp { get; set; }
         public int Coins { get; set; }
-        public CardStatus Status { get; set; }
         public ICollection<Answer> Answers { get; set; }
         public Answer CorrectAnswer { get; set; }
 

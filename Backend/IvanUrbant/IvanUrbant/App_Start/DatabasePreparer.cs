@@ -17,32 +17,32 @@ namespace IvanUrbant
         }
 
         public const string SQL = @"
-INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[Status],[CorrectAnswer_Id])
-VALUES(1,2,N'Вопрос',N'Как поступить с просроченными медикаментами?',2,0 ,0,null)
+INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[CorrectAnswer_Id])
+VALUES(1,2,N'Вопрос',N'Как поступить с просроченными медикаментами?',2,0 ,null)
 
-INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[Status],[CorrectAnswer_Id])
-VALUES(2,2,N'Вопрос',N'Почему нельзя сдавать чеки в макулатуру?',2,0 ,0,null)
+INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[CorrectAnswer_Id])
+VALUES(2,2,N'Вопрос',N'Почему нельзя сдавать чеки в макулатуру?',2,0 ,null)
 
-INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[Status],[CorrectAnswer_Id])
-VALUES(3,2,N'Вопрос',N'При выборе продуктов обрати внимание на упаковку, а именно...',2,0 ,0,null)
+INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[CorrectAnswer_Id])
+VALUES(3,2,N'Вопрос',N'При выборе продуктов обрати внимание на упаковку, а именно...',2,0 ,null)
 
-INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[Status],[CorrectAnswer_Id])
-VALUES(4,3,N'Совет',N'Cминай пластиковые бутылки перед утилизацией, так они займут меньше места.',2,0 ,0,null)
+INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[CorrectAnswer_Id])
+VALUES(4,3,N'Совет',N'Cминай пластиковые бутылки перед утилизацией, так они займут меньше места.',2,0 ,null)
 
-INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[Status],[CorrectAnswer_Id])
-VALUES(5,3,N'Совет',N'Одноразовые стаканчики внутри покрыты слоем пластика, чтобы не размокали. Их сложно перерабатывать, поэтому лучше использовать многоразовую кружку.',2,0 ,0,null)
+INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[CorrectAnswer_Id])
+VALUES(5,3,N'Совет',N'Одноразовые стаканчики внутри покрыты слоем пластика, чтобы не размокали. Их сложно перерабатывать, поэтому лучше использовать многоразовую кружку.',2,0 ,null)
 
-INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[Status],[CorrectAnswer_Id])
-VALUES(6,3,N'Совет',N'Ненужные, но пригодные для использования вещи, могут принести пользу другим, их можно отдать через шеринговые группы в социальных сетях.',2,0 ,0,null)
+INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[CorrectAnswer_Id])
+VALUES(6,3,N'Совет',N'Ненужные, но пригодные для использования вещи, могут принести пользу другим, их можно отдать через шеринговые группы в социальных сетях.',2,0 ,null)
 
-INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[Status],[CorrectAnswer_Id])
-VALUES(7,1,N'Задача',N'Перебери аптечку и выкинь все просроченные лекарства. Ненужные, с хорошим сроком годности отдай нуждающимся.',2,0 ,0,null)
+INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[CorrectAnswer_Id])
+VALUES(7,1,N'Задача',N'Перебери аптечку и выкинь все просроченные лекарства. Ненужные, с хорошим сроком годности отдай нуждающимся.',2,0 ,null)
 
-INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[Status],[CorrectAnswer_Id])
-VALUES(8,1,N'Задача',N'Положи в сумку пакет для продуктов, чтобы не покупать на кассе новый.',2,0 ,0,null)
+INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[CorrectAnswer_Id])
+VALUES(8,1,N'Задача',N'Положи в сумку пакет для продуктов, чтобы не покупать на кассе новый.',2,0 ,null)
 
-INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[Status],[CorrectAnswer_Id])
-VALUES(9,1,N'Задача',N'Заведи дома отдельные контейнеры под стекло, пластик и бумагу.',2,0 ,0,null)
+INSERT INTO [dbo].[Cards]([Id],[Type],[Title],[Description],[Exp],[Coins],[CorrectAnswer_Id])
+VALUES(9,1,N'Задача',N'Заведи дома отдельные контейнеры под стекло, пластик и бумагу.',2,0 ,null)
 
 
 INSERT INTO [dbo].[Answers]([Id],[Title],[Card_Id])

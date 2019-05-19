@@ -44,7 +44,7 @@ namespace IvanUrbant.Controllers
                     Type = c.Type,
                     AvailableCards = c.AvailableCards.Select(e => new AvailableCardModel
                     {
-                        IsLootboxed = e.IsLootboxed,
+                        Status = e.CardStatus,
                         Card = new CardModel
                         {
                             Id = e.Card.Id,
@@ -53,7 +53,6 @@ namespace IvanUrbant.Controllers
                             Description =e.Card. Description,
                             Exp = e.Card.Exp,
                             Coins = e.Card.Coins,
-                            Status = e.Card.Status,
                             Answers = e.Card.Answers.Select(p => new AnswerModel{Id = p.Id, Title = p.Title}),
                             CorrectAnswer = e.Card.CorrectAnswer != null ? new AnswerModel{Id = e.Card.CorrectAnswer.Id, Title = e.Card.CorrectAnswer.Title} : null
                         }
@@ -128,9 +127,9 @@ namespace IvanUrbant.Controllers
             var cards = db.Card.Where(c => availableCardsIds.Contains(c.Id)).ToArray();
             db.AvailableCards.AddRange(new[]
             {
-                new AvailableCards {IsLootboxed = true, UserInfo = newInfo, Card = cards[0]},
-                new AvailableCards {IsLootboxed = true, UserInfo = newInfo, Card = cards[1]},
-                new AvailableCards {IsLootboxed = true, UserInfo = newInfo, Card = cards[2]}
+                new AvailableCards {UserInfo = newInfo, Card = cards[0], CardStatus = CardStatus.NotActive},
+                new AvailableCards {UserInfo = newInfo, Card = cards[1], CardStatus = CardStatus.NotActive},
+                new AvailableCards {UserInfo = newInfo, Card = cards[2], CardStatus = CardStatus.NotActive}
             });
             db.SaveChanges();
         }
