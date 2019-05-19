@@ -1,5 +1,6 @@
 import {createHashHistory} from 'history';
 import * as React from "react";
+import {CharApi} from '../api/CharApi';
 import {Loader} from '../Loader/Loader';
 import {CardStatus, CardType, ICard, IChar} from '../models/models';
 import {Routing} from '../Routing/Routing';
@@ -90,10 +91,11 @@ export class App extends React.Component<{}, AppState> {
   }
 
   private getCharInfo = async () => {
-    //TODO: сделать задержку в пару секунд на запрос, чтобы нормально показался голубь-лоадер
-    /*const char = await CharApi.getInfo();
-    this.setState({char, loading: false});*/
+    /*setTimeout(async () => {
+      const char = await CharApi.getInfo();
+      this.setState({char, loading: false});
+    }, 1500);*/
 
-    setTimeout(() => this.setState({char: testChar, loading: false}), 4000);
+    setTimeout(() => this.setState({char: testChar, loading: false}), 1);
   }
 }

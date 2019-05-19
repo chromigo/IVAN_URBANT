@@ -6,6 +6,12 @@ import {Modal} from '../../Modal/Modal';
 import {CardType, ICard} from '../../models/models';
 import "./MainPage.less";
 
+const barCaptionDictionary = {
+  [CardType.Question]: "Вопрос",
+  [CardType.Task]: "Задание",
+  [CardType.Advice]: "Совет"
+}
+
 interface MainPageProps extends IContext {
 }
 
@@ -26,18 +32,34 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
 
   render(): JSX.Element {
     const {name, level, lootboxes, experience, coins, avatar} = this.props.char;
+    const userpicClassName = classnames(
+      "userpic",
+      `userpic${1}`
+    );
+
+    const expPercent = experience > 100 ? 100 : experience;
 
     return (
       <div>
         <h1>{name}</h1>
-        <div className="level">{level}</div>
-        <div>Монет: {coins}</div>
-        <div>Exp: {experience}</div>
-        <div><CharAvatar type={avatar} staticPic/></div>
-        {lootboxes && lootboxes.length
-          ? <div onClick={() => this.setState({showLootbox: true})}
-                 className="lootboxClosed"/>
-          : null}
+        <div className="info">
+          <div className="userpicWrap"><div className={userpicClassName}/></div>
+          <div className="exp">
+            <span>LVL: {level}</span>
+            <div className="expBar" style={{width: `${expPercent}%`}}/>
+            <div className="expCaption">EXP</div>
+          </div>
+        </div>
+        <div className="coins">{coins}$</div>
+        <div className="charInfo">
+          <div className="mainLootbox">
+            {lootboxes && lootboxes.length
+              ? <div onClick={() => this.setState({showLootbox: true})}
+                     className="lootboxClosed"/>
+              : null}
+          </div>
+          <div className="mainChar"><CharAvatar type={avatar} staticPic/></div>
+        </div>
         {this.renderLootboxModal(lootboxes)}
         {this.renderCardModal()}
       </div>
@@ -73,12 +95,15 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
       const {title, description, experience, coins, type, answers, correctAnswer, id} = currentCard;
       const acceptEnable = type === CardType.Question ? this.state.selectedAnswer !== null : true;
 
+      const barCaption = barCaptionDictionary[type];
+
       return (
-        <Modal onClose={() => this.setState({showCard: false, showLootbox: true, hiddenCards: updatedHiddenCards})}>
+        <Modal onClose={() => this.setState({showCard: false, showLootbox: true, hiddenCards: updatedHiddenCards})} solid>
           <div className="cardInfo">
             <div className="bar">
-              <div className="barItem">{experience}</div>
-              <div className="barItem">{coins}</div>
+              <div className="barCaption">{barCaption}</div>
+              <span className="barExp">exp</span>
+              <span className="barExpCount">{experience}</span>
             </div>
             <div className="title">{title}</div>
             <div className="description">{description}</div>

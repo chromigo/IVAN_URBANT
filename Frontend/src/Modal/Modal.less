@@ -30,10 +30,25 @@
   top: 1em;
   right: 1em;
   z-index: 350;
+  cursor: pointer;
 
   &:before {
     content: "\2573";
     color: white;
     font-size: 2em;
+  }
+}
+
+.solid {
+  padding: 3px;
+
+  .modalClose:before {
+    color: #E46C4E;
+  }
+
+  .modalBack {
+    background-color: #F7D283;
+    opacity: 1;
+    border: 3px solid #E46C4E;
   }
 }

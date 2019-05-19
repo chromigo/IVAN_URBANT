@@ -1,13 +1,106 @@
-.level {
+.coins {
   font-size: 2em;
   border-radius: 50%;
-  background-color: orange;
+  background-color: #e5ecef;
   width: 2em;
   height: 2em;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1em;
+  margin-top: 0.6em;
+  box-shadow: 0 0 4px 0 #848484;
+}
+
+.userpicWrap {
+  width: 3.6em;
+  height: 4em;
+  border: 2px solid #5d5d5d;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  padding-top: 0.4em;
+
+  .userpic {
+    background-position: center top;
+    background-repeat: no-repeat;
+    width: 3em;
+    height: 4em;
+  }
+
+  .userpic1 {
+    background-image: url("../../Resources/persons/melkiy.svg");
+    background-size: 3em;
+  }
+
+  .userpic2 {
+    background-image: url("../../Resources/persons/serednyak.svg");
+    background-size: 3em;
+  }
+
+  .userpic3 {
+    background-image: url("../../Resources/persons/kachok.svg");
+    background-size: 6em;
+  }
+}
+
+.info {
+  display: flex;
+
+  .exp {
+    flex: 0 1 100%;
+    border: 2px solid #5d5d5d;
+    border-left: none;
+    display: flex;
+    align-items: center;
+    padding-left: 1em;
+    position: relative;
+
+    span {
+      position: relative;
+      z-index: 50;
+    }
+  }
+
+  .expBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: orange;
+    z-index: 0;
+  }
+
+  .expCaption {
+    position: absolute;
+    text-align: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+    font-size: 2em;
+    z-index: 10;
+  }
+}
+
+.charInfo {
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.mainChar {
+  flex: 0 0 30%;
+}
+
+.mainLootbox {
+  flex: 0 0 50%;
+  position: relative;
+  top: -2em;
 }
 
 .cards {
@@ -54,40 +147,81 @@
 }
 
 .cardInfo {
-  color: white;
-  padding-top: 2em;
+  height: 100%;
+  color: #4C1E12;
 
   .title {
     text-align: center;
     font-size: 2em;
-    text-transform: uppercase;
-    margin-bottom: 0.6em;
+    margin-bottom: 0.4em;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 8em;
+      top: 2em;
+      left: 0;
+      right: 0;
+      opacity: 0.7;
+      z-index: -1;
+      background: url("../../Resources/card-back.svg") center 0 no-repeat;
+    }
   }
 
   .bar {
     display: flex;
-    margin-bottom: 1em;
-    margin-right: 1.2em;
+    padding-top: 2em;
+    padding-left: 1em;
     padding-bottom: 0.4em;
-    justify-content: flex-end;
+    min-height: 10em;
+    background-color: #FAE1AC;
+    position: relative;
+    margin-bottom: 4em;
 
-    .barItem {
-      margin-right: 1em;
+    &:after {
+      content: "";
+      position: absolute;
+      left: -1px;
+      bottom: -29px;
+      background: url("../../Resources/card-bar.svg") 0 0 no-repeat;
+      width: 100%;
+      height: 60px;
+    }
+
+    .barCaption {
+      position: absolute;
+      left: 0.4em;
+      bottom: -0.2em;
+      z-index: 100;
+      font-size: 2.4em;
+      text-transform: uppercase;
+    }
+
+    .barExp {
+      margin-right: 0.6em;
       border-radius: 50%;
-      background-color: #f1f1f1;
-      color: #777;
+      border: 3px solid #E46C4E;
       width: 2.4em;
       height: 2.4em;
       display: flex;
-      align-items: center;
       justify-content: center;
       font-size: 1.6em;
+      padding-top: 0.6em;
+      text-transform: uppercase;
+    }
+
+    .barExpCount {
+      font-size: 4em;
+      line-height: 0.8em;
     }
   }
 
   .description {
     font-size: 1.2em;
     line-height: 1.4em;
+    padding: 0 1em;
   }
 
   .acceptWrap {
@@ -96,11 +230,14 @@
   }
 
   .accept {
-    padding: 0.6em 1em;
-    font-size: 1.2em;
-    border: 2px solid white;
+    padding: 0.4em 0.6em;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    background-color: #E46C4E;
+    border-radius: 0.2em;
     display: inline-block;
     text-align: center;
+    cursor: pointer;
 
     &.disabled {
       pointer-events: none;
@@ -109,32 +246,34 @@
   }
 
   .answers {
-    margin-top: 2em;
+    margin-top: 1em;
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
     padding: 0 2em;
 
     .answer {
-      width: 45%;
-      flex: 0 0 45%;
-      margin: 2%;
+      width: 40%;
+      flex: 0 0 40%;
+      margin: 2% 0;
       display: flex;
-      font-size: 1.4em;
-      line-height: 1.6em;
+      font-size: 1.2em;
+      line-height: 1.2em;
+      cursor: pointer;
 
       &.correct {
-        color: #7ecc7e;
+        color: #279827;
       }
 
       &.wrong {
-        color: #da5454;
+        color: #c10909;
       }
     }
 
     .answerInput {
       margin-right: 0.6em;
       position: relative;
-      top: 8px;
+      top: 4px;
     }
   }
 }
