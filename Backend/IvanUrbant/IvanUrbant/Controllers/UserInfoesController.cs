@@ -123,6 +123,16 @@ namespace IvanUrbant.Controllers
             db.Set<ApplicationUser>().Attach(user);
             user.UserInfo = newInfo;
             await db.SaveChangesAsync();
+
+            var availableCardsIds = new[] {1, 2, 3};
+            var cards = db.Card.Where(c => availableCardsIds.Contains(c.Id)).ToArray();
+            db.AvailableCards.AddRange(new[]
+            {
+                new AvailableCards {IsLootboxed = true, UserInfo = newInfo, Card = cards[0]},
+                new AvailableCards {IsLootboxed = true, UserInfo = newInfo, Card = cards[1]},
+                new AvailableCards {IsLootboxed = true, UserInfo = newInfo, Card = cards[2]}
+            });
+            db.SaveChanges();
         }
         protected override void Dispose(bool disposing)
         {
