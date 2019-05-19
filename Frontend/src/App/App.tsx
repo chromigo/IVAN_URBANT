@@ -1,5 +1,6 @@
 import {createHashHistory} from 'history';
 import * as React from "react";
+import {CharApi} from '../api/CharApi';
 import {Loader} from '../Loader/Loader';
 import {CardStatus, CardType, ICard, IChar} from '../models/models';
 import {Routing} from '../Routing/Routing';
@@ -8,23 +9,23 @@ const card1: ICard = {
   title: "Some card",
   coins: 3,
   experience: 22,
-  id: "123",
+  id: 123,
   type: CardType.Question,
   description: "some card description",
-  correctAnswer: "second answer",
+  /*correctAnswer: "second answer",
   answers: [
     "oloo1",
     "second answer",
     "third",
     "dfkdklfkldskl dslkf ldkf ldsfk"
-  ]
+  ]*/
 }
 
 const card2: ICard = {
   title: "Some other card",
   coins: 32,
   experience: 223,
-  id: "123",
+  id: 456,
   type: CardType.Task,
   description: "alfj lamk f;ldmkafmdamfkl dmsklfm dsfklsdm fklsdm fklmdsmf dksfkdmsf klksdf"
 }
@@ -35,7 +36,7 @@ const testChar: IChar = {
   coins: 3,
   experience: 5,
   level: 20,
-  lootboxes: [
+  availableCards: [
     {status: CardStatus.InProgress, card: card1},
     {status: CardStatus.Skipped, card: card2},
     {status: CardStatus.InProgress, card: card2}

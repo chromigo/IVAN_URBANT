@@ -14,9 +14,17 @@ export class Navigation extends React.Component<NavigationProps> {
 
     return (
       <div className="navigation">
-        <div className={navigationItem}><Link to={RouterPaths.Cards}>cards</Link></div>
-        <div className={navigationItem}><Link to={RouterPaths.Root}>root</Link></div>
-        <div className={navigationItem}><Link to={RouterPaths.Rating}>rating</Link></div>
+        <div className={navigationItem}>
+          <div className="disabled">
+            <Link to={RouterPaths.Cards}>Карточки</Link>
+          </div>
+        </div>
+        <div className={navigationItem}><Link to={RouterPaths.Root}>Персонаж</Link></div>
+        <div className={navigationItem}>
+          <div className="disabled">
+            <Link to={RouterPaths.Rating}>Рейтинг</Link>
+          </div>
+        </div>
 
         {/*<div onClick={this.onLogOff}>Log off</div>*/}
       </div>

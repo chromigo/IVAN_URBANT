@@ -1,9 +1,10 @@
 import * as classnames from "classnames";
 import * as React from "react";
+import {CardsApi} from '../../api/CardsApi';
 import {IContext} from '../../App/App';
 import {CharAvatar} from '../../CharAvatar/CharAvatar';
 import {Modal} from '../../Modal/Modal';
-import {CardStatus, CardType, ICard, ICardInfo} from '../../models/models';
+import {CardStatus, CardType, IAnswer, ICard, ICardInfo} from '../../models/models';
 import "./MainPage.less";
 
 const barCaptionDictionary = {
@@ -30,10 +31,10 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
   }
 
   render(): JSX.Element {
-    const {name, level, lootboxes, experience, coins, avatar} = this.props.char;
+    const {name, level, availableCards, experience, coins, avatar} = this.props.char;
     const userpicClassName = classnames(
       "userpic",
-      `userpic${1}`
+      `userpic${avatar}`
     );
 
     const expPercent = experience > 100 ? 100 : experience;
@@ -52,14 +53,14 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
         <div className="coins">{coins}$</div>
         <div className="charInfo">
           <div className="mainLootbox">
-            {!this.state.showLootbox && lootboxes && lootboxes.length
+            {!this.state.showLootbox && availableCards && availableCards.length
               ? <div onClick={() => this.setState({showLootbox: true})}
                      className="lootboxClosed"/>
               : null}
           </div>
           <div className="mainChar"><CharAvatar type={avatar} staticPic/></div>
         </div>
-        {this.renderLootboxModal(lootboxes)}
+        {this.renderLootboxModal(availableCards)}
         {this.renderCardModal()}
       </div>
     )
@@ -89,7 +90,7 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
 
   private renderCardModal(): JSX.Element {
     const cardIndex = this.state.activeCard;
-    const currentCardInfo = this.props.char && this.props.char.lootboxes && this.props.char.lootboxes[cardIndex];
+    const currentCardInfo = this.props.char && this.props.char.availableCards && this.props.char.availableCards[cardIndex];
     const currentCard = currentCardInfo && currentCardInfo.card;
 
     if (currentCard && this.state.showCard) {
@@ -99,7 +100,11 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
       const barCaption = barCaptionDictionary[type];
 
       return (
-        <Modal onClose={() => this.setState({showCard: false, showLootbox: true})} solid>
+        <Modal onClose={async () => {
+          await CardsApi.skipCard(id);
+          await this.props.getCharInfo();
+          this.setState({showCard: false, showLootbox: true});
+        }} solid>
           <div className="cardInfo">
             <div className="bar">
               <div className="barCaption">{barCaption}</div>
@@ -121,11 +126,11 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
     }
   }
 
-  private renderAnswers(answers: string[]): JSX.Element {
+  private renderAnswers(answers: IAnswer[]): JSX.Element {
     return (
       <div className="answers">
-        {answers.map((a, i) => {
-          const selected = this.state.selectedAnswer === i;
+        {answers.map((a: IAnswer, i) => {
+          const selected = this.state.selectedAnswer === a.id;
           const guessed = selected && this.state.answerGuessed === true;
           const notGuessed = selected && this.state.answerGuessed === false;
 
@@ -134,14 +139,14 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
             guessed ? "correct" : notGuessed ? "wrong" : ""
           );
 
-          return (
-            <label key={i} className={answerClassName}>
+          return a && a.title && (
+            <label key={a.title} className={answerClassName}>
               <input type="radio"
                      className="answerInput"
                      name="answer"
                      checked={selected}
-                     onChange={() => this.setState({selectedAnswer: i, answerGuessed: null})}/>
-              <span>{a}</span>
+                     onChange={() => this.setState({selectedAnswer: a.id, answerGuessed: null})}/>
+              <span>{a.title}</span>
             </label>
           )
         })}
@@ -151,14 +156,18 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
 
   private onShowCard = (activeCard: number) => this.setState({showLootbox: false, showCard: true, activeCard});
 
-  private onAccept = (type: CardType, cardId: string, answers: string[], correctAnswer: string) => {
+  private onAccept = (type: CardType, cardId: number, answers: IAnswer[], correctAnswer: IAnswer) => {
     if (type === CardType.Question) {
-      const currentAnswer = answers && answers[this.state.selectedAnswer];
-      if (currentAnswer === correctAnswer) {
+      const filtered = answers && answers.filter(a => a && a.id === this.state.selectedAnswer);
+      const currentAnswer = filtered && filtered[0] && filtered[0].id;
+      if (correctAnswer && currentAnswer === correctAnswer.id) {
         this.setState({answerGuessed: true});
+        setTimeout(() => this.setState({answerGuessed: false, showCard: false, showLootbox: false, selectedAnswer: null}), 2000);
       } else {
         this.setState({answerGuessed: false});
       }
+    } else {
+      this.setState({showCard: false, showLootbox: false, activeCard: null});
     }
   }
 }

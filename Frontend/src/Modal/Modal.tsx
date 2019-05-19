@@ -9,13 +9,13 @@ interface ModalProps {
 
 export class Modal extends React.Component<ModalProps> {
   render(): JSX.Element {
-    const className = classnames("modal", this.props.solid && "solid");
+    const className = classnames("modalBox", this.props.solid && "solid");
 
     return (
       <div className={className}>
-        <div className="modalClose" onClick={() => this.props.onClose()}/>
-        <div className="modalContent">{this.props.children}</div>
-        <div className="modalBack"/>
+        <div className="modalBoxClose" onClick={() => this.props.onClose()}/>
+        <div className="modalBoxContent">{this.props.children}</div>
+        <div className="modalBoxBack"/>
       </div>
     );
   }

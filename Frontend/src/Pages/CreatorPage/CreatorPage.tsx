@@ -45,7 +45,7 @@ export class CreatorPage extends React.Component<CreatorPageProps, Partial<IChar
         </div>
         <div className="createButtonWrap">
           <div onClick={() => creatingEnable && this.onCreate()} className={createButtonStyles}>
-            Create!
+            Создать
           </div>
         </div>
       </div>

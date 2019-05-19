@@ -50,5 +50,5 @@ export class Routing extends React.Component<RoutingProps> {
 
   private renderMain = (context: IContext) => this.props.showCreator
     ? <CreatorPage getCharInfo={context.getCharInfo}/>
-    : <MainPage char={context.char}/>;
+    : <MainPage {...context}/>;
 }

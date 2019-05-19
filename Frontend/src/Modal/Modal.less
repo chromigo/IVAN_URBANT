@@ -1,4 +1,4 @@
-.modal {
+.modalBox {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,7 +8,7 @@
   z-index: 100;
 }
 
-.modalBack {
+.modalBoxBack {
   position: fixed;
   top: 0;
   left: 0;
@@ -19,14 +19,14 @@
   z-index: 200;
 }
 
-.modalContent {
+.modalBoxContent {
   height: 100%;
   //background-color: #f1f1f1;
   position: relative;
   z-index: 300;
 }
 
-.modalClose {
+.modalBoxClose {
   position: absolute;
   top: 1em;
   right: 1em;
@@ -43,11 +43,11 @@
 .solid {
   padding: 3px;
 
-  .modalClose:before {
+  .modalBoxClose:before {
     color: #E46C4E;
   }
 
-  .modalBack {
+  .modalBoxBack {
     background-color: #F7D283;
     opacity: 1;
     border: 3px solid #E46C4E;

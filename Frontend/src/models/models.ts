@@ -4,7 +4,7 @@ export interface IChar {
   coins: number;
   experience: number;
   avatar: 1 | 2 | 3;
-  lootboxes?: ICardInfo[];
+  availableCards?: ICardInfo[];
 }
 
 export interface ICardInfo {
@@ -13,14 +13,19 @@ export interface ICardInfo {
 }
 
 export interface ICard {
-  id: string;
+  id: number;
   type: CardType;
   title: string;
   description: string;
   experience: number;
   coins: number;
-  answers?: string[];
-  correctAnswer?: string;
+  answers?: IAnswer[];
+  correctAnswer?: IAnswer;
+}
+
+export interface IAnswer {
+  id: number;
+  title: string;
 }
 
 export enum CardStatus {

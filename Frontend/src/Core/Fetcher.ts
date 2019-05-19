@@ -148,7 +148,17 @@ export namespace Fetcher {
     });
   }
 
-  export function get<T>(url: string, data?: any): Promise<T> {
+  export function put<T>(url: string, data?: string): Promise<T> {
+    return fetch(url, {
+      method: "PUT",
+      headers: patchHeaders({
+        "Content-Type": "application/json"
+      }),
+      body: data
+    });
+  }
+
+    export function get<T>(url: string, data?: any): Promise<T> {
     return fetch(UrlBuilder.makeHref(url, data));
   }
 }
