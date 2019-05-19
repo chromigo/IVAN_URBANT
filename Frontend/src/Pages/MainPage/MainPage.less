@@ -94,13 +94,17 @@
 }
 
 .mainChar {
-  flex: 0 0 30%;
+  flex: 0 1 30%;
 }
 
 .mainLootbox {
-  flex: 0 0 50%;
+  flex: 0 1 40%;
   position: relative;
   top: -2em;
+
+  .lootboxClosed {
+    width: 100%;
+  }
 }
 
 .cards {
@@ -120,9 +124,41 @@
     justify-content: space-around;
 
     .item {
+      position: relative;
       width: 20vw;
       height: 28vh;
-      background-color: orange;
+      background-color: #E46C4E;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &:before, &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1em;
+        background-color: #F7D283;
+      }
+
+      &:after {
+        top: initial;
+        bottom: 0;
+      }
+
+      .cardSymbol {
+        width: 15vw;
+        height: 15vw;
+        border: 3px solid #F7D283;
+        font-size: 10vw;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #F7D283;
+      }
     }
   }
 

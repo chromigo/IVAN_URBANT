@@ -53,7 +53,7 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
         <div className="coins">{coins}$</div>
         <div className="charInfo">
           <div className="mainLootbox">
-            {lootboxes && lootboxes.length
+            {!this.state.showLootbox && lootboxes && lootboxes.length
               ? <div onClick={() => this.setState({showLootbox: true})}
                      className="lootboxClosed"/>
               : null}
@@ -74,9 +74,11 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
           <div className="items">
             {lootboxes.map((card: ICard, i: number) => {
               if (!this.state.hiddenCards.filter(h => h === i).length) {
-                return <div className="item"
-                            key={i}
-                            onClick={() => this.onShowCard(i)}/>
+                return (
+                  <div className="item" key={i} onClick={() => this.onShowCard(i)}>
+                    <div className="cardSymbol">?</div>
+                  </div>
+                )
               }
             })}
           </div>
