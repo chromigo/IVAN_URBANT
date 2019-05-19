@@ -18,8 +18,6 @@ namespace IvanUrbant.Models
         }
         
         public UserInfo UserInfo {get; set;}
-        public Card Card {get; set;}
-        public Answer Answer {get; set;}
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -35,5 +33,7 @@ namespace IvanUrbant.Models
         }
 
         public DbSet<UserInfo> UserInfos {get;set;}
+        public DbSet<Card> Card {get; set;}
+        public DbSet<Answer> Answer {get; set;}
     }
 }
