@@ -3,7 +3,7 @@ import * as React from "react";
 import {IContext} from '../../App/App';
 import {CharAvatar} from '../../CharAvatar/CharAvatar';
 import {Modal} from '../../Modal/Modal';
-import {CardType, ICard} from '../../models/models';
+import {CardStatus, CardType, ICard, ICardInfo} from '../../models/models';
 import "./MainPage.less";
 
 const barCaptionDictionary = {
@@ -18,7 +18,6 @@ interface MainPageProps extends IContext {
 interface MainPageState {
   showLootbox?: boolean;
   showCard?: boolean;
-  hiddenCards?: number[];
   activeCard?: number;
   selectedAnswer?: number;
   answerGuessed?: boolean;
@@ -27,7 +26,7 @@ interface MainPageState {
 export class MainPage extends React.Component<MainPageProps, MainPageState> {
   constructor(props: any, state: any) {
     super(props, state);
-    this.state = {showLootbox: false, showCard: false, hiddenCards: [], activeCard: null, selectedAnswer: null};
+    this.state = {showLootbox: false, showCard: false, activeCard: null, selectedAnswer: null};
   }
 
   render(): JSX.Element {
@@ -66,14 +65,14 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
     )
   }
 
-  private renderLootboxModal(lootboxes: ICard[]): JSX.Element {
+  private renderLootboxModal(lootboxes: ICardInfo[]): JSX.Element {
     return this.state.showLootbox && (
       <Modal onClose={() => this.setState({showLootbox: false})}>
         <div className="cards">
-          <div className="heading">Забирайте карточки</div>
+          {/*<div className="heading">Забирайте карточки</div>*/}
           <div className="items">
-            {lootboxes.map((card: ICard, i: number) => {
-              if (!this.state.hiddenCards.filter(h => h === i).length) {
+            {lootboxes.map((cardInfo: ICardInfo, i: number) => {
+              if (cardInfo && cardInfo.card && cardInfo.status !== CardStatus.Skipped) {
                 return (
                   <div className="item" key={i} onClick={() => this.onShowCard(i)}>
                     <div className="cardSymbol">?</div>
@@ -90,17 +89,17 @@ export class MainPage extends React.Component<MainPageProps, MainPageState> {
 
   private renderCardModal(): JSX.Element {
     const cardIndex = this.state.activeCard;
-    const currentCard = this.props.char && this.props.char.lootboxes && this.props.char.lootboxes[cardIndex];
-    const updatedHiddenCards = [...this.state.hiddenCards].concat(cardIndex);
+    const currentCardInfo = this.props.char && this.props.char.lootboxes && this.props.char.lootboxes[cardIndex];
+    const currentCard = currentCardInfo && currentCardInfo.card;
 
     if (currentCard && this.state.showCard) {
-      const {title, description, experience, coins, type, answers, correctAnswer, id} = currentCard;
+      const {title, description, experience, type, answers, correctAnswer, id} = currentCard;
       const acceptEnable = type === CardType.Question ? this.state.selectedAnswer !== null : true;
 
       const barCaption = barCaptionDictionary[type];
 
       return (
-        <Modal onClose={() => this.setState({showCard: false, showLootbox: true, hiddenCards: updatedHiddenCards})} solid>
+        <Modal onClose={() => this.setState({showCard: false, showLootbox: true})} solid>
           <div className="cardInfo">
             <div className="bar">
               <div className="barCaption">{barCaption}</div>

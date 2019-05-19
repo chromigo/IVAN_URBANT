@@ -4,7 +4,12 @@ export interface IChar {
   coins: number;
   experience: number;
   avatar: 1 | 2 | 3;
-  lootboxes?: ICard[];
+  lootboxes?: ICardInfo[];
+}
+
+export interface ICardInfo {
+  status: CardStatus;
+  card: ICard;
 }
 
 export interface ICard {
@@ -14,7 +19,6 @@ export interface ICard {
   description: string;
   experience: number;
   coins: number;
-  status: CardStatus;
   answers?: string[];
   correctAnswer?: string;
 }
